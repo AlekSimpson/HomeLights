@@ -1,3 +1,4 @@
+from IP import ip
 import modernforms
 from datetime import date, datetime
 
@@ -9,8 +10,6 @@ seasons = [('winter', (date(Y,  1,  1),  date(Y,  3, 20))),
            ('winter', (date(Y, 12, 21),  date(Y, 12, 31)))]
 
 fanDirections = {'winter' : False, 'summer' : True, 'autumn' : False, 'spring' : True}
-
-ip = '192.168.50.248'
 
 fan = modernforms.ModernFormsFan(ip)
 
@@ -32,12 +31,12 @@ def controlLight(brightness=100):
 
 def toggleFan():
     fan.fan_on = not fan.fan_on
+    # fan.fan_speed = speed
 
 def controlFan(speed, on=True, direction=fanDirections[currentSeason]):
     # Direction: 
     #   True is counter clockwise
     #   False is clock wise (winter)
-
     fan.fan_on = on
     fan.fan_direction = direction
     fan.fan_speed = speed
